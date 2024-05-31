@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label>Insert article link</mat-label>
+  <!--<input matInput [(ngModel)]="articleLink" #articleLinkInput (input)="checkInputValue(articleLinkInput.value)">-->
+  <input matInput #articleLinkInput (input)="checkInputValue(articleLinkInput.value)">
+</mat-form-field>
+@if(!downloadDisabled){
+<button mat-flat-button color="primary" [disabled]="!inputValue" (click)="captureAndAssignScreenshot(articleLinkInput.value)">Download</button>
+}
+@else{
+<p>Call limit reached. Wait 1 minute</p>
+}
