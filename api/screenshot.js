@@ -9,6 +9,7 @@ module.exports = async (req, res) => {
   const apiUrl = `http://api.screenshotlayer.com/api/capture?access_key=${accessKey}&url=${encodeURIComponent(url)}&viewport=${viewport}&width=${width}&secret_key=${md5SecretKey}&format=PNG`;
 
   try {
+    console.log(apiUrl);
     const response = await fetch(apiUrl);
     if (!response.ok) {
       throw new Error(`Error fetching screenshot: ${response.statusText}`);
