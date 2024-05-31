@@ -15,6 +15,7 @@ export class ScreenshotCaptureService {
   captureScreenshot(url: string): Observable<Blob> {
     const md5SecretKey = CryptoJS.MD5(url + environment.screenshotApiSecretKey).toString();
     const completeUrl = `/api/capture?access_key=${environment.screenshotApiAccessKey}&url=${encodeURIComponent(url)}&viewport=${this.apiViewport}&width=${this.apiWidth}&secret_key=${md5SecretKey}&format=PNG`;
+    console.log(completeUrl);
 
     return this.httpService.get(completeUrl, { responseType: 'blob' }).pipe(
       catchError(error => {
